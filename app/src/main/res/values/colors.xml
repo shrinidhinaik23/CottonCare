@@ -1,0 +1,11 @@
+<resources>
+    <color name="green_primary">#29A36A</color>
+    <color name="green_dark">#1E7A50</color>
+    <color name="orange_accent">#FF8A00</color>
+    <color name="blue_accent">#2E86DE</color>
+    <color name="pink_purple">#B334AC</color>
+    <color name="surface_gray">#F5F7F9</color>
+    <color name="text_primary">#1B1B1B</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="card_stroke">#E5E7EB</color>
+</resources>

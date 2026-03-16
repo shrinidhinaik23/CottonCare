@@ -1,0 +1,24 @@
+{
+  "bacterial_blight": {
+    "index": 0,
+    "severity": "High",
+    "remedy": "Spray a copper-based fungicide on the crop to stop the disease from spreading. Carefully pick off and throw away the leaves that already have spots or damage, so the infection doesn’t spread further. When watering, pour water at the base of the plant instead of sprinkling from above, because wet leaves make the disease worse."
+
+
+  },
+  "curl_virus": {
+    "index": 1,
+    "severity": "High",
+    "remedy": "This virus spreads through tiny insects called whiteflies. Spray insect medicine to reduce whiteflies. Plant cotton types that are specially bred to resist this virus. If you see plants that are badly curled and sick, remove them early so they don’t infect healthy plants."
+  },
+  "fussarium_wilt": {
+    "index": 2,
+    "severity": "Medium",
+    "remedy": "Make sure the soil drains water properly, because too much water in the roots makes the disease worse. Choose cotton varieties that are naturally strong against this disease. If the problem continues, you can spray a fungicide (plant medicine for fungus) as advised by an agricultural expert."
+  },
+  "healthy": {
+    "index": 3,
+    "severity": "None",
+    "remedy": "Your crop is healthy. No special action is needed. Just keep giving normal care like watering, weeding, and checking the plants regularly to catch any early signs of disease."
+  }
+}
