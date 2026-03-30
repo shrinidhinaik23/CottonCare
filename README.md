@@ -28,14 +28,15 @@ CottonCare solves this by bringing **AI directly to mobile devices**, enabling *
 ## 📱 App Screenshots
 
 ### 🏠 Home Screen
-
+![Home](./assets/home.jpeg)
 ### 📷 Scan Screen
-
+![Scan](./assets/scan.jpeg)
 ### 🤖 Prediction Result
-
+![Prediction](./assets/result.jpeg)
 ### 📚 Disease Library
-
+![Library](./assets/library.jpeg)
 ### 🚀 Onboarding Experience
+![Onboarding](./assets/onboarding.jpeg)
 
 ---
 
