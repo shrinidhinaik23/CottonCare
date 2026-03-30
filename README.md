@@ -1,226 +1,139 @@
-COTTONCARE
+# 🌿 CottonCare — AI-Based Cotton Disease Detection App
 
-CottonCare is an offline AI-powered Android application for cotton leaf disease detection and crop support. It helps farmers or agriculture students capture or upload a cotton leaf image, classify common diseases using a TensorFlow Lite model, and view remedies and disease details directly inside the app.
+An **offline AI-powered Android application** that detects cotton leaf diseases using **TensorFlow Lite** and provides **instant diagnosis with remedies**, even without internet access.
 
---------------------------------------------------
+---
 
-FEATURES
+## 🚀 Why this project?
 
-- Offline cotton leaf disease detection using TensorFlow Lite
-- Capture image using camera or choose image from gallery
-- Cotton leaf validation before prediction
-- Confidence-based prediction with unknown fallback
-- Disease detail screen with symptoms, causes, treatment, and prevention
-- Built-in disease library
-- Scan history stored locally on device
-- Splash screen and onboarding flow
-- Jetpack Compose UI with navigation
+Farmers often lack access to fast and reliable crop diagnosis tools.
+CottonCare solves this by bringing **AI directly to mobile devices**, enabling **real-time, offline disease detection**.
 
---------------------------------------------------
+---
 
-SUPPORTED CLASSES
+## ✨ Features
 
-- Bacterial Blight
-- Cotton Leaf Curl Virus
-- Fusarium Wilt
-- Healthy Plant
+* 📷 Upload or capture cotton leaf image
+* 🤖 AI-based disease prediction (on-device)
+* 📊 Confidence score with smart thresholds
+* ⚠️ Unknown detection for out-of-scope images
+* 💊 Remedy suggestions for each disease
+* 📴 Works completely offline
+* 🧠 ML Kit validation (detects non-crop images / faces)
+* 📚 Built-in disease information library
+* 🕒 Local scan history tracking
 
---------------------------------------------------
+---
 
-TECH STACK
+## 🧠 AI Model Details
 
-ANDROID APP
-- Kotlin
-- Jetpack Compose
-- Navigation Compose
-- CameraX
-- TensorFlow Lite
-- Gson
-- Coil
-- ML Kit
+* Model: **MobileNetV2 (Transfer Learning)**
+* Input size: **224 × 224 × 3**
+* Framework: **TensorFlow → TensorFlow Lite**
+* Output:
 
-ML BACKEND
-- Python
-- TensorFlow / Keras
-- MobileNetV2
-- NumPy
-- Pillow
-- scikit-learn
+  * Disease name
+  * Confidence %
+  * Remedy suggestion
 
---------------------------------------------------
+### Supported Classes
 
-HOW IT WORKS
+* Fusarium Wilt
+* Bacterial Blight
+* Curl Virus
+* Healthy
 
-1. User opens the app
-2. Splash screen is shown
-3. User completes onboarding or skips
-4. User captures or uploads an image
-5. Image is resized to 224 x 224
-6. TensorFlow Lite model predicts disease
-7. If confidence is low → result is UNKNOWN
-8. Otherwise, app displays:
-   - Disease name
-   - Severity
-   - Remedy
-   - Confidence
-9. Scan history is stored locally
+---
 
---------------------------------------------------
+## ⚙️ How it works
 
-PROJECT STRUCTURE
+```
+User Image
+   ↓
+Validation (ML Kit)
+   ↓
+Preprocessing (Resize + Normalize)
+   ↓
+TFLite Model Inference
+   ↓
+Confidence Threshold Check
+   ↓
+Result + Remedy + History Storage
+```
 
-CottonCare/
-│
-├── app/
-│   ├── src/main/
-│   │   ├── assets/
-│   │   │   ├── class_indices.json
-│   │   │   └── cotton_disease_mobilenet.tflite
-│   │   ├── java/com/example/shrinidhi/
-│   │   │   ├── model/
-│   │   │   ├── navigation/
-│   │   │   ├── ui/
-│   │   │   │   ├── components/
-│   │   │   │   ├── screens/
-│   │   │   │   └── theme/
-│   │   │   ├── utils/
-│   │   │   └── MainActivity.kt
-│   │   ├── res/
-│   │   └── AndroidManifest.xml
-│   └── build.gradle.kts
-│
-├── backend/
-│   ├── model/
-│   ├── scripts/
-│   ├── class_indices.json
-│   ├── train_mobilenet.py
-│   ├── evaluate_model.py
-│   ├── test_model.py
-│   ├── convert_to_tflite.py
-│   └── requirements.txt
-│
-├── build.gradle.kts
-├── settings.gradle.kts
-└── gradle/
+---
 
---------------------------------------------------
+## 📱 App Screenshots
 
-ANDROID SETUP
+> Add your screenshots here (VERY IMPORTANT)
 
-PREREQUISITES
-- Android Studio
-- Android SDK
-- Minimum SDK 24+
-- Kotlin + Compose enabled
+```
+assets/home.png
+assets/prediction.png
+assets/result.png
+assets/library.png
+```
 
-STEPS
+---
 
-1. Clone the repo
-   git clone https://github.com/shrinidhinaik23/CottonCare.git
+## 📊 Model Performance (Add if possible)
 
-2. Open in Android Studio
+* Training Accuracy: XX%
+* Validation Accuracy: XX%
+* Test Accuracy: XX%
 
-3. Let Gradle sync complete
+> (Even approximate values are fine — but must be truthful)
 
-4. Ensure assets exist:
-   - cotton_disease_mobilenet.tflite
-   - class_indices.json
+---
 
-5. Run on emulator or device
+## 🛠️ Tech Stack
 
---------------------------------------------------
+### Mobile App
 
-ML MODEL TRAINING
+* Kotlin
+* Jetpack Compose
+* CameraX
+* ML Kit
 
-MODEL DETAILS
-- MobileNetV2 (ImageNet weights)
-- Input: 224 x 224 x 3
-- Softmax output layer
+### Machine Learning
 
-TRAIN
+* TensorFlow / Keras
+* MobileNetV2
+* TensorFlow Lite
 
-cd backend
-python train_mobilenet.py
+---
 
-OUTPUT
-- cotton_disease_mobilenet.h5
-- class_indices.json
+## ⚡ Installation
 
-EVALUATE
+```bash
+git clone https://github.com/shrinidhinaik23/CottonCare.git
+cd CottonCare
+```
 
-python evaluate_model.py
+Open in **Android Studio** and run the app.
 
-TEST
+---
 
-python test_model.py
+## ⚠️ Limitations
 
-CONVERT TO TFLITE
+* Limited dataset size
+* Accuracy depends on image quality
+* Model may not detect unseen diseases
 
-python convert_to_tflite.py
+---
 
---------------------------------------------------
+## 🚀 Future Improvements
 
-PREDICTION LOGIC
+* Add more disease classes
+* Improve dataset size
+* Real-time camera detection
+* Multilingual support for farmers
+* Cloud sync (optional)
 
-- Image resized to 224 x 224
-- Normalized to [0,1]
-- TFLite inference runs on device
-- Highest probability selected
-- If confidence < 70% → UNKNOWN
+---
 
---------------------------------------------------
+## 👨‍💻 Author
 
-MAIN SCREENS
+**Shrinidhi Naik**
 
-- Splash Screen
-- Welcome Screen
-- Detect Screen
-- Home Screen
-- Scan Screen
-- Prediction Screen
-- Disease Library Screen
-- Disease Detail Screen
-
---------------------------------------------------
-
-LIMITATIONS
-
-- Only 4 disease classes supported
-- Backend paths are machine-specific
-- Android-only app
-- No cloud sync
-- Unknown detection is rule-based
-
---------------------------------------------------
-
-FUTURE IMPROVEMENTS
-
-- Add more diseases
-- Improve unknown detection
-- Add multilingual support
-- Weather integration
-- Cloud backup
-- Better dataset and accuracy
-- Strong image validation
-
---------------------------------------------------
-
-USE CASE
-
-- Farmers for quick diagnosis
-- Students for AI projects
-- Offline rural usage
-- Android + ML integration demo
-
---------------------------------------------------
-
-AUTHOR
-
-Shrinidhi Naik
-GitHub: https://github.com/shrinidhinaik23
-
---------------------------------------------------
-
-LICENSE
-
-This project is for educational and academic purposes.
+---
