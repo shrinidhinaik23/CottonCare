@@ -1,26 +1,39 @@
 # 🌿 CottonCare — AI-Based Cotton Disease Detection App
 
+![Platform](https://img.shields.io/badge/platform-android-green)
+![AI](https://img.shields.io/badge/AI-TensorFlow%20Lite-blue)
+![Model](https://img.shields.io/badge/model-MobileNetV2-orange)
+![Status](https://img.shields.io/badge/status-Offline%20Ready-success)
+
 An **offline AI-powered Android application** that detects cotton leaf diseases using **TensorFlow Lite** and provides **instant diagnosis with remedies**, even without internet access.
 
 ---
 
-## 🚀 Why this project?
+## 🚀 Problem Statement
 
-Farmers often lack access to quick and reliable crop diagnosis tools.
-CottonCare solves this by bringing **AI directly to mobile devices**, enabling **real-time, offline disease detection**.
+Farmers often lack access to **fast, reliable, and affordable crop diagnosis tools**, especially in rural areas with poor internet connectivity.
 
 ---
 
-## ✨ Features
+## 💡 Solution
+
+CottonCare brings **AI directly to mobile devices**, enabling:
+
+* ⚡ Real-time disease detection
+* 📴 Fully offline usage
+* 🌱 Instant actionable remedies
+
+---
+
+## ✨ Key Features
 
 * 📷 Capture or upload cotton leaf images
-* 🤖 On-device AI disease prediction (offline)
-* 📊 Confidence score with threshold-based validation
-* ⚠️ Unknown detection for non-cotton / unclear images
-* 💊 Remedy suggestions for detected diseases
-* 📴 Works completely offline (no API required)
-* 🧠 ML Kit validation (prevents invalid inputs like faces)
-* 📚 Built-in disease library with severity levels
+* 🤖 On-device AI prediction (no API required)
+* 📊 Confidence-based result validation
+* ⚠️ Unknown detection for invalid inputs
+* 💊 Remedy suggestions for each disease
+* 🧠 ML Kit input validation (rejects non-leaf images)
+* 📚 Built-in disease knowledge base
 * 🕒 Local scan history tracking
 
 ---
@@ -28,14 +41,23 @@ CottonCare solves this by bringing **AI directly to mobile devices**, enabling *
 ## 📱 App Screenshots
 
 ### 🏠 Home Screen
+
 ![Home](./assets/home.jpeg)
+
 ### 📷 Scan Screen
+
 ![Scan](./assets/scan.jpeg)
+
 ### 🤖 Prediction Result
+
 ![Prediction](./assets/result.jpeg)
+
 ### 📚 Disease Library
+
 ![Library](./assets/library.jpeg)
+
 ### 🚀 Onboarding Experience
+
 ![Onboarding](./assets/onboarding.jpeg)
 
 ---
@@ -45,7 +67,7 @@ CottonCare solves this by bringing **AI directly to mobile devices**, enabling *
 * Model: **MobileNetV2 (Transfer Learning)**
 * Input Size: **224 × 224 × 3**
 * Framework: **TensorFlow → TensorFlow Lite**
-* Runs fully on-device (no internet required)
+* Deployment: **Fully on-device (offline inference)**
 
 ### Supported Classes
 
@@ -56,23 +78,70 @@ CottonCare solves this by bringing **AI directly to mobile devices**, enabling *
 
 ---
 
-## ⚙️ How it works
+## ⚙️ System Architecture
 
 ```text
-User Image
-   ↓
-ML Kit Validation (crop check)
-   ↓
-Preprocessing (Resize + Normalize)
-   ↓
-TensorFlow Lite Inference
-   ↓
-Confidence Threshold Check
-   ↓
-Prediction + Remedy Display
-   ↓
-Stored in Local History
+Image Input (Camera / Gallery)
+        ↓
+ML Kit Validation
+        ↓
+Image Preprocessing (Resize 224x224, Normalize)
+        ↓
+TensorFlow Lite Model (MobileNetV2)
+        ↓
+Prediction Output (Class + Confidence)
+        ↓
+Business Logic Layer
+   - Confidence Threshold Handling
+   - Unknown Detection
+   - Severity Mapping
+        ↓
+UI Layer (Jetpack Compose)
+        ↓
+Local Storage (Scan History)
 ```
+
+---
+
+## ⚙️ Key Engineering Decisions
+
+### 🔹 Why TensorFlow Lite?
+
+* Enables **offline inference**
+* Faster performance on mobile
+* No dependency on external APIs
+
+---
+
+### 🔹 Why MobileNetV2?
+
+* Lightweight and optimized for mobile
+* Good trade-off between accuracy & speed
+
+---
+
+### 🔹 Confidence Threshold Handling
+
+* < 70% → Low confidence warning
+* 70–85% → Caution message
+* > 85% → Strong prediction
+
+👉 Prevents misleading results and improves user trust
+
+---
+
+### 🔹 ML Kit Validation
+
+* Filters non-leaf inputs (faces, random objects)
+* Improves prediction reliability
+
+---
+
+### 🔹 Offline-First Design
+
+* Works without internet
+* Ensures privacy + speed
+* Ideal for rural deployment
 
 ---
 
@@ -87,7 +156,7 @@ Stored in Local History
 
 ## 🛠️ Tech Stack
 
-### 📱 Mobile App
+### 📱 Mobile
 
 * Kotlin
 * Jetpack Compose
@@ -109,25 +178,25 @@ git clone https://github.com/shrinidhinaik23/CottonCare.git
 cd CottonCare
 ```
 
-Open the project in **Android Studio** and run the app.
+Open in **Android Studio** and run the application.
 
 ---
 
 ## ⚠️ Limitations
 
 * Limited dataset size
-* Accuracy depends on image quality
-* May not detect unseen diseases
-* No cloud sync (offline-only design)
+* Performance depends on image quality
+* Cannot detect unseen diseases
+* Offline-only (no cloud sync)
 
 ---
 
 ## 🚀 Future Improvements
 
-* Expand dataset for better accuracy
-* Add more disease classes
+* Expand dataset for higher accuracy
+* Add more disease categories
 * Real-time camera detection
-* Multilingual support for farmers
+* Multilingual farmer support
 * Optional cloud-based analytics
 
 ---
@@ -138,4 +207,3 @@ Open the project in **Android Studio** and run the app.
 
 ---
 
-##
